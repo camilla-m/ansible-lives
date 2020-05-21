@@ -1,11 +1,11 @@
-- hosts: testepunk # all | 127.0.0.1  | {{ tenant }}
-#  connection: local
+- hosts: 127.0.0.1 # all | testepunk  | {{ tenant }}
+  connection: local
 
   tasks:
-- name: ensure apache is at the latest version
-  yum:
-    name: httpd
-    state: latest
+  - name: ensure apache is at the latest version
+    yum:
+      name: httpd
+      state: latest
 
 - name: Creates directory
   file:
