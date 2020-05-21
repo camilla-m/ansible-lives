@@ -1,4 +1,5 @@
-- hosts: localhost # all | localhost  | {{ tenant }}
+- hosts: testepunk # all | 127.0.0.1  | {{ tenant }}
+#  connection: local
 
   tasks:
 - name: ensure apache is at the latest version
