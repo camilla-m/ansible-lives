@@ -7,33 +7,33 @@
       name: httpd
       state: latest
 
-- name: Creates directory
-  file:
-    path: /home/ec2-user/teste/
-    state: directory
-    owner: ec2-user
-    group: ec2-user #dica do user criptomaluco
+  - name: Creates directory
+    file:
+      path: /home/ec2-user/teste/
+      state: directory
+      owner: ec2-user
+      group: ec2-user #dica do user criptomaluco
 
-- name: Copy file with owner and permissions
-  copy:
-    src: /home/ec2-user/teste.txt
-    dest: /home/ec2-user/teste/teste.txt
-    owner: ec2-user
-    group: ec2-user #dica do user criptomaluco
-    mode: '0644'
+  - name: Copy file with owner and permissions
+    copy:
+      src: /home/ec2-user/teste.txt
+      dest: /home/ec2-user/teste/teste.txt
+      owner: ec2-user
+      group: ec2-user #dica do user criptomaluco
+      mode: '0644'
 
 # - name: Copiando de lá pra cá (fetch)
 #   fetch:
 #     src: /tmp/somefile #máquina do hosts
 #     dest: /tmp/fetched #maquina que ta executando o ansible
 
-- name: Add a line to ansible hosts
-  lineinfile:
-    path: /etc/ansible/hosts
-    line: "[testecamilla]\n192.168.1.99\tansible_ssh_private_key_file=/home/ec2-user/teste.pem"
-    create: yes
-    become: yes
-    become_user: root
+  - name: Add a line to ansible hosts
+    lineinfile:
+      path: /etc/ansible/hosts
+      line: "[testecamilla]\n192.168.1.99\tansible_ssh_private_key_file=/home/ec2-user/teste.pem"
+      create: yes
+      become: yes
+      become_user: root
 
 
 # # Basic provisioning example
