@@ -7,3 +7,8 @@
     fetch:
       src: /home/ec2-user/teste/teste2.txt #máquina do hosts
       dest: /home/ec2-user/teste/testedestino.txt #maquina que ta executando o ansible
+
+  - name: Copy file with owner and permissions
+    copy:
+      src: /home/ec2-user/teste3.txt
+      dest: /home/ec2-user/teste/testedoansible.txt
