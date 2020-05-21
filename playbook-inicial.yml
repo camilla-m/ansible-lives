@@ -3,9 +3,9 @@
 
   tasks:
 - name: ensure apache is at the latest version
-    yum:
-      name: httpd
-      state: latest
+  yum:
+    name: httpd
+    state: latest
 
 - name: Creates directory
   file:
