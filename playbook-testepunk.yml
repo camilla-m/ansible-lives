@@ -10,5 +10,5 @@
 
   - name: Copy file with owner and permissions
     copy:
-      src: /home/ec2-user/teste3.txt
+      src: /home/ec2-user/teste/testedestino.txt
       dest: /home/ec2-user/teste/testedoansible.txt
