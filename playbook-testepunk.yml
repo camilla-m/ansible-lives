@@ -1,0 +1,9 @@
+- hosts: testepunk # all | testepunk  | {{ tenant }}
+  become: yes
+  become_user: root #dica de segurança / not all become / root all?
+
+  tasks:
+  - name: Copiando de lá pra cá (fetch)
+    fetch:
+      src: /home/ec2-user/teste/teste2.txt #máquina do hosts
+      dest: /home/ec2-user/teste/testedestino.txt #maquina que ta executando o ansible

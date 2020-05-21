@@ -1,7 +1,7 @@
 - hosts: 127.0.0.1 # all | testepunk  | {{ tenant }}
   connection: local
   become: yes
-  become_user: root
+  become_user: root #dica de segurança / not all become / root all?
 
   tasks:
   - name: ensure apache is at the latest version
@@ -23,17 +23,17 @@
       owner: ec2-user
       group: ec2-user #dica do user criptomaluco
       mode: '0644'
-
-# - name: Copiando de lá pra cá (fetch)
-#   fetch:
-#     src: /tmp/somefile #máquina do hosts
-#     dest: /tmp/fetched #maquina que ta executando o ansible
+  
+  - name: Cat hosts
+    command: cat /etc/ansible/hosts
+    register: hostsfileansible
 
   - name: Add a line to ansible hosts
     lineinfile:
       path: /etc/ansible/hosts
       line: "[testecamilla]\n192.168.1.99\tansible_ssh_private_key_file=/home/ec2-user/teste.pem"
       create: yes
+    when: "testecamilla" not in hostsfileansible.stdout
 
 
 # # Basic provisioning example
