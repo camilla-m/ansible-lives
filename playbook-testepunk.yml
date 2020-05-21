@@ -1,4 +1,4 @@
-- hosts: {{tenant}} # all | testepunk  | {{ tenant }}
+- hosts: "{{tenant}}" # all | testepunk  | {{ tenant }}
   become: yes
   become_user: root #dica de segurança / not all become / root all?
 
