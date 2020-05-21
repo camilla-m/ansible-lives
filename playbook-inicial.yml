@@ -35,6 +35,7 @@
       create: yes
     when: '"testecamilla" not in hostsfileansible.stdout' #comentar o verbose
 
+#comment https://github.com/ansible/ansible/issues/15920
 
 # # Basic provisioning example
 # - ec2:
