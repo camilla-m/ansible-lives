@@ -33,7 +33,7 @@
       path: /etc/ansible/hosts
       line: "[testecamilla]\n192.168.1.99\tansible_ssh_private_key_file=/home/ec2-user/teste.pem"
       create: yes
-    when: "testecamilla" not in hostsfileansible.stdout
+    when: '"testecamilla" not in hostsfileansible.stdout'
 
 
 # # Basic provisioning example
