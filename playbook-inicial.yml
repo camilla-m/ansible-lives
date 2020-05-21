@@ -1,5 +1,7 @@
 - hosts: 127.0.0.1 # all | testepunk  | {{ tenant }}
   connection: local
+  become: yes
+  become_user: root
 
   tasks:
   - name: ensure apache is at the latest version
@@ -32,8 +34,6 @@
       path: /etc/ansible/hosts
       line: "[testecamilla]\n192.168.1.99\tansible_ssh_private_key_file=/home/ec2-user/teste.pem"
       create: yes
-      become: yes
-      become_user: root
 
 
 # # Basic provisioning example
