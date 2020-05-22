@@ -1,4 +1,4 @@
-- hosts: 127.0.0.1 # all | testepunk  | {{ tenant }}
+- hosts: 127.0.0.1 # all | testepunk  | "{{ tenant }}"
   connection: local
   become: yes
   become_user: root #dica de segurança / not all become / root all?
