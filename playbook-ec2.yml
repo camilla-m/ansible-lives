@@ -23,7 +23,7 @@
       termination_protection: yes
       assign_public_ip: yes
       vpc_subnet_id: subnet-0ca60f40
-      register: deviceidlaunch
+    register: deviceidlaunch
 
 
   - name: allocate a new elastic IP and associate it with an instance
