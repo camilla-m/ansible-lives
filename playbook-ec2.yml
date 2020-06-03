@@ -40,11 +40,25 @@
     debug:
       msg: "Allocated IP inside a VPC is {{ elasticip.public_ip }}"
 
+  - name: example using security group rule descriptions
+    ec2_group:
+      name: "default"
+      description: default VPC security group
+      vpc_id: vpc-c73adaac
+      profile: "default"
+      region: us-east-2
+      rules:
+        - proto: tcp
+          ports:
+          - 22
+          cidr_ip: "{{ elasticip.public_ip }}"/32
+          rule_desc: "{{testeec2}}"
+
   - name: Wait for SSH to come up
     delegate_to: "{{ item.public_dns_name }}"
     wait_for_connection:
       delay: 60
-      timeout: 320
+      timeout: 120
     loop: "{{ deviceidlaunch.instances }}"
 
   - name: Cat hosts
