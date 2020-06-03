@@ -1,7 +1,7 @@
 - hosts: 127.0.0.1 # all | testepunk  | "{{ tenant }}"
   connection: local
-  #become: yes
-  #become_user: root #dica de segurança / not all become / root all?
+  become: yes
+  become_user: root #dica de segurança / not all become / root all?
   # em que python está rodando antes de instalar o boto? importante ver
 
   tasks:
