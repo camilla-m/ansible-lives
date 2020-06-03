@@ -10,7 +10,7 @@ Installation | Troubleshooting | Setting static hosts with tips | Some modules |
 
 ### Second class
 
-EC2 Modules | Boto | pip | Troubleshooting | Credentials | Python Version | Lauching Instances with Ansible | EC2 services | Security Group | Elastic Ip
+EC2 Modules | Boto | pip | Troubleshooting | Credentials | Python Version | Lauching Instances with Ansible | EC2 services | Security Group | Elastic Ip | Permissions | Host | Running in another instance a playbook 
 
 Useful links: 
 
