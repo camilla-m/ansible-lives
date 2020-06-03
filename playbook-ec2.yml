@@ -31,9 +31,9 @@
 
   - name: allocate a new elastic IP and associate it with an instance
     ec2_eip:
-      device_id: "{{ item }}"
+      device_id: "{{ deviceidlaunch.instance_ids[0] }}" #"{{ item }}"
       region: us-east-2
-    loop: "{{ deviceidlaunch.instance_ids }}"
+    #loop: "{{ deviceidlaunch.instance_ids }}"
     register: elasticip
 
   - name: output the IP
