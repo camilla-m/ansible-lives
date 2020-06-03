@@ -38,3 +38,24 @@
   - name: output the IP
     debug:
       msg: "Allocated IP inside a VPC is {{ elasticip.public_ip }}"
+
+  - name: Wait for SSH to come up
+    delegate_to: "{{ item.public_dns_name }}"
+    wait_for_connection:
+      delay: 60
+      timeout: 320
+    loop: "{{ deviceidlaunch.instances }}"
+
+  - name: Cat hosts
+    command: cat /etc/ansible/hosts
+    register: hostsfileansible
+
+  - name: Add a line to ansible hosts
+    lineinfile:
+      path: /etc/ansible/hosts
+      line: "[{{testeec2}}]\n{{elasticip.public_ip}}\tansible_ssh_private_key_file=/home/ec2-user/camidevops.pem"
+      create: yes
+    when: '"{{testeec2}}" not in hostsfileansible.stdout' #comentar o verbose
+
+  - name: run playbook
+    command: ansible-playbook playbook-inicial.yml --extra-vars="testeec2={{testeec2}}"
