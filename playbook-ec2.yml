@@ -28,4 +28,4 @@
 
   - name: allocate a new elastic IP and associate it with an instance
     ec2_eip:
-      device_id: {{ deviceidlaunch.id }}
+      device_id: "{{ deviceidlaunch.id }}"
