@@ -1,0 +1,22 @@
+- hosts: 127.0.0.1 # all | testepunk  | "{{ tenant }}"
+  connection: local
+  #become: yes
+  #become_user: root #dica de segurança / not all become / root all?
+
+  tasks:
+  # - name: ensure apache is at the latest version
+  #   yum:
+  #     name: httpd
+  #     state: latest
+  - ec2:
+      key_name: camidevops
+      instance_type: t2.micro
+      #image: ami-123456
+      wait: yes
+      count: 1
+      group: default
+      instance_tags:
+        name: teste1
+      monitoring: yes
+      termination_protection: yes
+      assign_public_ip: yes
