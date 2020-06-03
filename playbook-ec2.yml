@@ -18,8 +18,14 @@
       count: 1
       group: default
       instance_tags:
-        name: teste1
+        Name: teste1
       monitoring: yes
       termination_protection: yes
-      #assign_public_ip: yes
-      #vpc_subnet_id: subnet-0ca60f40
+      assign_public_ip: yes
+      vpc_subnet_id: subnet-0ca60f40
+      register: deviceidlaunch
+
+
+  - name: allocate a new elastic IP and associate it with an instance
+    ec2_eip:
+      device_id: {{ deviceidlaunch.id }}
