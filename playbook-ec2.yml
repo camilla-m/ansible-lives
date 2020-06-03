@@ -55,11 +55,10 @@
           rule_desc: "{{testeec2}}"
 
   - name: Wait for SSH to come up
-    delegate_to: "{{ item.public_dns_name }}"
+    delegate_to: "{{ elasticip.public_ip }}"
     wait_for_connection:
       delay: 60
       timeout: 120
-    loop: "{{ deviceidlaunch.instances }}"
 
   - name: Cat hosts
     command: cat /etc/ansible/hosts
