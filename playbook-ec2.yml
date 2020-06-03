@@ -28,4 +28,10 @@
 
   - name: allocate a new elastic IP and associate it with an instance
     ec2_eip:
-      device_id: "{{ deviceidlaunch.id }}"
+      device_id: "{{ deviceidlaunch.instance_ids }}" #{{ item }}
+    #loop: "{{ deviceidlaunch.instance_ids }}"
+    register: elasticip
+
+  - name: output the IP
+    debug:
+      msg: "Allocated IP inside a VPC is {{ elasticip.public_ip }}"
