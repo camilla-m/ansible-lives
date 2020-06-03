@@ -42,18 +42,18 @@
 
   - name: example using security group rule descriptions
     ec2_group:
-      group_name: "default"
+      name: "default"
       description: default VPC security group
       vpc_id: vpc-c73adaac
       profile: "default"
       region: us-east-2
+      purge_rules: no
       rules:
         - proto: tcp
           ports:
           - 22
           cidr_ip: "{{ elasticip.public_ip }}/32"
           rule_desc: "{{testeec2}}"
-    diff: True
 
   - name: Wait for SSH to come up
     delegate_to: "{{ elasticip.public_ip }}"
