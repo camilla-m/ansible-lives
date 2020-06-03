@@ -2,6 +2,7 @@
   connection: local
   #become: yes
   #become_user: root #dica de segurança / not all become / root all?
+  # em que python está rodando antes de instalar o boto? importante ver
 
   tasks:
   # - name: ensure apache is at the latest version
@@ -10,6 +11,7 @@
   #     state: latest
   - ec2:
       key_name: camidevops
+      region: us-east-1
       instance_type: t2.micro
       #image: ami-123456
       wait: yes
