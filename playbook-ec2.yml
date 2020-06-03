@@ -69,9 +69,9 @@
       path: /etc/ansible/hosts
       line: "[{{testeec2}}]\n{{elasticip.public_ip}}\tansible_ssh_private_key_file=/home/ec2-user/camidevops.pem"
       create: yes
-    when: '"{{testeec2}}" not in hostsfileansible.stdout' #comentar o verbose
     become: yes
     become_user: root
+    when: '"{{testeec2}}" not in hostsfileansible.stdout' #comentar o verbose
 
   - name: run playbook
     command: ansible-playbook playbook-inicial.yml --extra-vars="testeec2={{testeec2}}"
