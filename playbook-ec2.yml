@@ -22,4 +22,5 @@
       monitoring: yes
       termination_protection: yes
       assign_public_ip: yes
-      vpc_subnet_id: subnet-0ca60f40
+#      vpc_subnet_id: subnet-0ca60f40
+      vpc_subnet_id: 0ca60f40
