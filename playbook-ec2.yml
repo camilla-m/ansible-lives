@@ -25,6 +25,9 @@
       vpc_subnet_id: subnet-0ca60f40
     register: deviceidlaunch
 
+#- name: sleep for 120 seconds and continue with play
+#  wait_for:
+#    timeout: 120
 
   - name: allocate a new elastic IP and associate it with an instance
     ec2_eip:
