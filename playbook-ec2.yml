@@ -10,14 +10,14 @@
   #     state: latest
   - ec2:
       key_name: camidevops
-      region: us-east-2
+      region: us-east-1
       instance_type: t2.micro
       image: ami-026dea5602e368e96
       wait: yes
       count: 1
       group: default
       instance_tags:
-        Name: teste1
+        Name: "{{ testeec2}} "
       monitoring: yes
       termination_protection: no
       assign_public_ip: yes
