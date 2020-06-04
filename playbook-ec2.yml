@@ -1,5 +1,7 @@
 - hosts: 127.0.0.1 # all | testepunk  | "{{ tenant }}"
   connection: local
+  become: yes
+  become_user: root
    #dica de segurança / not all become / root all?
   # em que python está rodando antes de instalar o boto? importante ver
 
@@ -69,8 +71,6 @@
       path: /etc/ansible/hosts
       line: "[{{testeec2}}]\n{{elasticip.public_ip}}\tansible_ssh_private_key_file=/home/ec2-user/camidevops.pem"
       create: yes
-    become: yes
-    become_user: root
     when: '"{{testeec2}}" not in hostsfileansible.stdout' #comentar o verbose
 
   - name: run playbook
