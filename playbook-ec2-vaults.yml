@@ -2,7 +2,7 @@
   connection: local
   vars_files:
     - awsvault
-    - nametest
+    - nametest2
 
   tasks:
   - ec2:
