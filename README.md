@@ -26,6 +26,8 @@ https://docs.ansible.com/ansible/latest/modules/ec2_eip_module.html
 
 ### Third class
 
+Creating vault | Editing vault | Encrypt vault | Decrypt vault | Multiple vaults | Ask pass vault | Vault pass file | Running playbook with vaults | DevSecOps
+
 Working with ansible vaults. Commom commands:
 
 `ansible-vault create awsvaults`
@@ -40,7 +42,7 @@ Selecting a vault password file in cmd line:
 
 `ansible-playbook site.yml --vault-password-file awsvaults`
 
-Selecting vault or more vaults inside playboom (check ec2 vaults playbook):
+Selecting vault or more vaults inside playbook (check ec2 vaults playbook):
 
 ```
   vars_files:
