@@ -62,7 +62,7 @@
           ports:
           - 22
           cidr_ip: "{{ elasticip.public_ip }}/32"
-          rule_desc: "{{testeec2}}"
+          rule_desc: "{{nameinvault}}"
 
   - name: Wait for SSH to come up
     delegate_to: "{{ elasticip.public_ip }}"
@@ -77,11 +77,11 @@
   - name: Add a line to ansible hosts
     lineinfile:
       path: /etc/ansible/hosts
-      line: "[{{testeec2}}]\n{{elasticip.public_ip}}\tansible_ssh_private_key_file=/home/ec2-user/camidevops.pem"
+      line: "[{{nameinvault}}]\n{{elasticip.public_ip}}\tansible_ssh_private_key_file=/home/ec2-user/camidevops.pem"
       create: yes
     become: yes
     become_user: root
-    when: '"{{testeec2}}" not in hostsfileansible.stdout' #comentar o verbose
+    when: '"{{nameinvault}}" not in hostsfileansible.stdout' #comentar o verbose
 
   - name: run playbook
-    command: ansible-playbook playbook-inicial.yml --extra-vars="testeec2={{testeec2}}"
+    command: ansible-playbook playbook-inicial.yml --extra-vars="nameinvault={{nameinvault}}"
