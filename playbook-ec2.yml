@@ -49,13 +49,13 @@
 
   - name: example using security group rule descriptions
     ec2_group:
+      aws_access_key: "{{aws_access_key_teste}}"
+      aws_secret_key: "{{aws_secret_key_teste}}"
       name: "default"
       description: default VPC security group
       vpc_id: vpc-c73adaac
       profile: "default"
       region: us-east-2
-      aws_access_key: "{{aws_access_key_teste}}"
-      aws_secret_key: "{{aws_secret_key_teste}}"
       purge_rules: no
       rules:
         - proto: tcp
