@@ -4,6 +4,7 @@
   # em que python está rodando antes de instalar o boto? importante ver
   vars_files:
     - awsvault
+    - nametest
 
   tasks:
   # - name: ensure apache is at the latest version
@@ -22,7 +23,7 @@
       count: 1
       group: default
       instance_tags:
-        Name: "{{testeec2}} "
+        Name: "{{nameinvault}} "
       monitoring: yes
       termination_protection: no
       assign_public_ip: yes
@@ -37,6 +38,8 @@
     ec2_eip:
       device_id: "{{ deviceidlaunch.instance_ids[0] }}" #"{{ item }}"
       region: us-east-2
+      aws_access_key: "{{aws_access_key_teste}}"
+      aws_secret_key: "{{aws_secret_key_teste}}"
     #loop: "{{ deviceidlaunch.instance_ids }}"
     register: elasticip
 
@@ -51,6 +54,8 @@
       vpc_id: vpc-c73adaac
       profile: "default"
       region: us-east-2
+      aws_access_key: "{{aws_access_key_teste}}"
+      aws_secret_key: "{{aws_secret_key_teste}}"
       purge_rules: no
       rules:
         - proto: tcp
