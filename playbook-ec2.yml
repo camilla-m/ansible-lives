@@ -8,6 +8,9 @@
   #   yum:
   #     name: httpd
   #     state: latest
+  - name: Keys
+    include_vars: awsvaults
+
   - ec2:
       key_name: camidevops
       aws_access_key: "{{aws_access_key_teste}}"
