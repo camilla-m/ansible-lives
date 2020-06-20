@@ -2,14 +2,14 @@
   connection: local
    #dica de segurança / not all become / root all?
   # em que python está rodando antes de instalar o boto? importante ver
+  vars_files:
+    - awsvault
 
   tasks:
   # - name: ensure apache is at the latest version
   #   yum:
   #     name: httpd
   #     state: latest
-  - name: Keys
-    include_vars: awsvaults
 
   - ec2:
       key_name: camidevops
