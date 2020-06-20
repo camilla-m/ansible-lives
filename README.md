@@ -36,9 +36,17 @@ Playing playbook with vault (it will ask the vault pass you created):
 
 `ansible-playbook site.yml --ask-vault-pass`
 
-Selecting a vault in cmd line:
+Selecting a vault password file in cmd line:
 
-`ansible-playbook site.yml --ask-vault-pass --vault-password-file awsvaults`
+`ansible-playbook site.yml --vault-password-file awsvaults`
+
+Selecting vault or more vaults inside playboom (check ec2 vaults playbook):
+
+```
+  vars_files:
+    - awsvault
+    - nametest  
+```
 
 Useful links:
 
