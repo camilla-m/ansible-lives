@@ -1,21 +1,9 @@
 - hosts: 127.0.0.1 # all | testepunk  | "{{ tenant }}"
   connection: local
-   #dica de segurança / not all become / root all?
-  # em que python está rodando antes de instalar o boto? importante ver
-  vars_files:
-    - awsvault
-    - nametest
 
   tasks:
-  # - name: ensure apache is at the latest version
-  #   yum:
-  #     name: httpd
-  #     state: latest
-
   - ec2:
       key_name: camidevops
-      aws_access_key: "{{aws_access_key_teste}}"
-      aws_secret_key: "{{aws_secret_key_teste}}"
       region: us-east-2
       instance_type: t2.micro
       image: ami-026dea5602e368e96
@@ -30,16 +18,10 @@
       vpc_subnet_id: subnet-0ca60f40
     register: deviceidlaunch
 
-#- name: sleep for 120 seconds and continue with play
-#  wait_for:
-#    timeout: 120
-
   - name: allocate a new elastic IP and associate it with an instance
     ec2_eip:
       device_id: "{{ deviceidlaunch.instance_ids[0] }}" #"{{ item }}"
       region: us-east-2
-      aws_access_key: "{{aws_access_key_teste}}"
-      aws_secret_key: "{{aws_secret_key_teste}}"
     #loop: "{{ deviceidlaunch.instance_ids }}"
     register: elasticip
 
@@ -47,22 +29,20 @@
     debug:
       msg: "Allocated IP inside a VPC is {{ elasticip.public_ip }}"
 
-  # - name: example using security group rule descriptions
-  #   ec2_group:
-  #     aws_access_key: "{{aws_access_key_teste}}"
-  #     aws_secret_key: "{{aws_secret_key_teste}}"
-  #     name: "default"
-  #     description: default VPC security group
-  #     vpc_id: vpc-c73adaac
-  #     profile: "default"
-  #     region: us-east-2
-  #     purge_rules: no
-  #     rules:
-  #       - proto: tcp
-  #         ports:
-  #         - 22
-  #         cidr_ip: "{{ elasticip.public_ip }}/32"
-  #         rule_desc: "{{nameinvault}}"
+  - name: example using security group rule descriptions
+    ec2_group:
+      name: "default"
+      description: default VPC security group
+      vpc_id: vpc-c73adaac
+      profile: "default"
+      region: us-east-2
+      purge_rules: no
+      rules:
+        - proto: tcp
+          ports:
+          - 22
+          cidr_ip: "{{ elasticip.public_ip }}/32"
+          rule_desc: "{{nameinvault}}"
 
   - name: Wait for SSH to come up
     delegate_to: "{{ elasticip.public_ip }}"
