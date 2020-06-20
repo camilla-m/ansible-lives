@@ -47,22 +47,22 @@
     debug:
       msg: "Allocated IP inside a VPC is {{ elasticip.public_ip }}"
 
-  - name: example using security group rule descriptions
-    ec2_group:
-      aws_access_key: "{{aws_access_key_teste}}"
-      aws_secret_key: "{{aws_secret_key_teste}}"
-      name: "default"
-      description: default VPC security group
-      vpc_id: vpc-c73adaac
-      profile: "default"
-      region: us-east-2
-      purge_rules: no
-      rules:
-        - proto: tcp
-          ports:
-          - 22
-          cidr_ip: "{{ elasticip.public_ip }}/32"
-          rule_desc: "{{nameinvault}}"
+  # - name: example using security group rule descriptions
+  #   ec2_group:
+  #     aws_access_key: "{{aws_access_key_teste}}"
+  #     aws_secret_key: "{{aws_secret_key_teste}}"
+  #     name: "default"
+  #     description: default VPC security group
+  #     vpc_id: vpc-c73adaac
+  #     profile: "default"
+  #     region: us-east-2
+  #     purge_rules: no
+  #     rules:
+  #       - proto: tcp
+  #         ports:
+  #         - 22
+  #         cidr_ip: "{{ elasticip.public_ip }}/32"
+  #         rule_desc: "{{nameinvault}}"
 
   - name: Wait for SSH to come up
     delegate_to: "{{ elasticip.public_ip }}"
