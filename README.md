@@ -24,6 +24,26 @@ https://docs.ansible.com/ansible/latest/modules/ec2_group_module.html
 
 https://docs.ansible.com/ansible/latest/modules/ec2_eip_module.html
 
+### Third class
+
+Working with ansible vaults. Commom commands:
+
+`ansible-vault create awsvaults`
+
+`ansible-vault edit awsvaults`
+
+Playing playbook with vault (it will ask the vault pass you created):
+
+`ansible-playbook site.yml --ask-vault-pass`
+
+Useful links:
+
+https://docs.ansible.com/ansible/latest/user_guide/playbooks_vault.html
+
+
+
+
+
 
 
 
