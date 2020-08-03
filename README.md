@@ -65,7 +65,6 @@ ansible-inventory -h
 ansible-inventory -i demo.aws_ec2.yml --list
 ansible-inventory -i demo.aws_ec2.yml --graph
 /home/ec2-user/ec2.py --list
-/home/ec2-user/ec2.py --graph
 ansible -i ec2.py -u ec2-user us-east-2 -m ping
 ```
 
