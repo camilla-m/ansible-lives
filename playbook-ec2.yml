@@ -49,6 +49,8 @@
     wait_for_connection:
       delay: 60
       timeout: 120
+    become: yes
+    become_user: ec2-user
 
   - name: Cat hosts
     command: cat /etc/ansible/hosts
