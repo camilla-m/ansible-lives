@@ -1,13 +1,6 @@
-- hosts: all
-  become: yes
-  become_user: root #dica de segurança / not all become / root all?
+- hosts: "{{nameinvault}}"
 
   tasks:
-  - name: ensure apache is at the latest version
-    yum:
-      name: httpd
-      state: latest
-
   - name: Creates directory
     file:
       path: /home/ec2-user/youtube/
