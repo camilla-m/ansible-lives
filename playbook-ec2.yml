@@ -44,9 +44,13 @@
           cidr_ip: "{{ elasticip.public_ip }}/32"
           rule_desc: "{{nameinvault}}"
 
-  - name: wait until it's ready
-    wait_for:
-      timeout: 60
+  - name: Wait for SSH to come up
+    delegate_to: "{{ elasticip.public_ip }}"
+    wait_for_connection:
+      delay: 60
+      timeout: 120
+    become: yes
+    remote_user: ec2-user
 
   - name: Cat hosts
     command: cat /etc/ansible/hosts
@@ -63,3 +67,5 @@
 
   - name: run playbook
     command: ansible-playbook playbook-inicial.yml --extra-vars="nameinvault={{nameinvault}}"
+    become: yes
+    become_user: ubuntu
