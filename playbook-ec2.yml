@@ -59,7 +59,7 @@
   - name: Add a line to ansible hosts
     lineinfile:
       path: /etc/ansible/hosts
-      line: "[{{nameinvault}}]\n{{elasticip.public_ip}}\tansible_ssh_private_key_file=/home/ec2-user/camidevops.pem"
+      line: "[{{nameinvault}}]\n{{elasticip.public_ip}}\tansible_ssh_private_key_file=/home/ubuntu/ansible-lives/camidevops.pem"
       create: yes
     become: yes
     become_user: root
