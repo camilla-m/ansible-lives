@@ -1,5 +1,7 @@
 - hosts: "{{nameinvault}}"
-
+  become: yes
+  remote_user: ec2-user
+  
   tasks:
   - name: Creates directory
     file:
