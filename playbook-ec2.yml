@@ -68,4 +68,3 @@
   - name: run playbook
     command: ansible-playbook playbook-inicial.yml --extra-vars="nameinvault={{nameinvault}}"
     become: yes
-    become_user: ubuntu
